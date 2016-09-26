@@ -1,0 +1,53 @@
+apply plugin: 'com.android.application'
+apply plugin: 'me.tatarka.retrolambda'
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'me.tatarka:gradle-retrolambda:2.5.0'
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+
+android {
+    compileSdkVersion 22
+    buildToolsVersion "22.0.1"
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        applicationId "org.shevchenko.listofcountries"
+        minSdkVersion 14
+        targetSdkVersion 22
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+android {
+    lintOptions {
+        abortOnError false
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    compile files('libs/Lightweight-Stream-API.jar')
+}
